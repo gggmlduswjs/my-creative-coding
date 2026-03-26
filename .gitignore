@@ -3,3 +3,5 @@ dist/
 .DS_Store
 *.webm
 *.mp4
+# LOV3 미디어 (용량)
+projects/lov3/media/

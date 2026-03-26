@@ -1,0 +1,8 @@
+{
+  "name": "my-creative-coding",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000 --cors",
+    "lov3": "npx serve . -p 3000 --cors -o projects/lov3/src/index.html"
+  }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOV3 — Visual</title>
+
+  <!-- MediaPipe Hands -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      color: #888;
+    }
+
+    #wrap {
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      background: #000;
+    }
+
+    video {
+      display: none;
+    }
+
+    /* Drop overlay */
+    #drop-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(0,0,0,0.85);
+      z-index: 10;
+      transition: opacity 0.3s;
+    }
+    #drop-overlay.hidden { opacity: 0; pointer-events: none; }
+    #drop-overlay h1 {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 12px;
+      color: #ff0066;
+    }
+    #drop-overlay p {
+      font-size: 13px;
+      color: #666;
+      letter-spacing: 2px;
+      text-align: center;
+      line-height: 1.8;
+    }
+    #drop-overlay .keys {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #444;
+      line-height: 2;
+      text-align: center;
+    }
+    #drop-overlay .keys kbd {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid #333;
+      border-radius: 3px;
+      color: #666;
+      font-family: inherit;
+      margin: 0 2px;
+    }
+    #drop-overlay button {
+      margin-top: 12px;
+      padding: 12px 32px;
+      background: #ff0066;
+      color: #fff;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      letter-spacing: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #drop-overlay button:hover { background: #cc0052; }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="c"></canvas>
+    <video id="webcam" playsinline></video>
+    <div id="drop-overlay">
+      <h1>LOV3</h1>
+      <p>WEBCAM + HAND TRACKING VISUAL</p>
+      <p style="font-size:11px; color:#555;">
+        audio file drag &amp; drop or click START first
+      </p>
+      <button id="start-btn">START</button>
+      <div class="keys">
+        <kbd>SPACE</kbd> play / pause audio<br>
+        <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> switch scene<br>
+        <kbd>R</kbd> record &nbsp; <kbd>F</kbd> fullscreen
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
